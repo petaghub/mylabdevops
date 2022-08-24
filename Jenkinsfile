@@ -41,7 +41,7 @@ pipeline{
             steps{
                 script{
 
-                def NexusRepo = Version.endswith("SNAPSHOT") ? "mylabDevOps-SNAPSHOT" : "mylabDevOps-RELEASE"
+                def NexusRepo = Version.endsWith("SNAPSHOT") ? "mylabDevOps-SNAPSHOT" : "mylabDevOps-RELEASE"
             
                 nexusArtifactUploader artifacts: 
                 [[artifactId: "${ArtifactId}", 
@@ -55,7 +55,7 @@ pipeline{
                 protocol: 'http', 
                 repository: "${NexusRepo}", 
                 version: "${Version}"
-                 }
+                }
             }
         }
         // Stage4 : Print environment variable information
