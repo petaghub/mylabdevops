@@ -22,11 +22,17 @@ pipeline{
 
             }
         }*/
-        // Stage 3: Testing
+        // Stage 2: Testing
         stage ('Test'){
             steps {
                 echo ' testing......'
 
+            }
+        }
+        // Stage 3 publish to Nexus artifactory
+        stage('publish artifact to nexus repo'){
+            steps{
+                nexusArtifactUploader artifacts: [[artifactId: 'mylabDevOps', classifier: '', file: 'target/mylabDevOps-0.0.4-SNAPSHOT.war', type: 'war']], credentialsId: 'b2ccc82a-065e-4055-b007-eab0ca0e9802', groupId: 'com.mylabdevops', nexusUrl: '172.30.10.208:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'mylabDevOps-SNAPSHOT', version: '0.0.4-SNAPSHOT'
             }
         }
 
