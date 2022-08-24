@@ -40,17 +40,17 @@ pipeline{
         stage('publish artifact to nexus repo'){
             steps{
                 nexusArtifactUploader artifacts: 
-                [[artifactId: 'mylabDevOps', 
+                [[artifactId: "${ArtifactId}", 
                 classifier: '', 
                 file: 'target/mylabDevOps-0.0.4-SNAPSHOT.war', 
                 type: 'war']], 
                 credentialsId: 'b2ccc82a-065e-4055-b007-eab0ca0e9802', 
-                groupId: 'com.mylabdevops', 
+                groupId: "${GroupId}", 
                 nexusUrl: '172.30.10.208:8081', 
                 nexusVersion: 'nexus3', 
                 protocol: 'http', 
                 repository: 'mylabDevOps-SNAPSHOT', 
-                version: '0.0.4-SNAPSHOT'
+                version: "${Version}"
             }
         }
         // Stage4 : Print environment variable information
