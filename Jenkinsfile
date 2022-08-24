@@ -39,6 +39,10 @@ pipeline{
         // Stage 3 publish to Nexus artifactory
         stage('publish artifact to nexus repo'){
             steps{
+                script{
+
+                def NexusRepo = Version.endswith("SNAPSHOT") ? "mylabDevOps-SNAPSHOT" : "mylabDevOps-RELEASE"
+            
                 nexusArtifactUploader artifacts: 
                 [[artifactId: "${ArtifactId}", 
                 classifier: '', 
@@ -49,8 +53,9 @@ pipeline{
                 nexusUrl: '172.30.10.208:8081', 
                 nexusVersion: 'nexus3', 
                 protocol: 'http', 
-                repository: 'mylabDevOps-SNAPSHOT', 
+                repository: "${NexusRepo}" , 
                 version: "${Version}"
+                 }
             }
         }
         // Stage4 : Print environment variable information
