@@ -46,7 +46,7 @@ pipeline{
                 nexusArtifactUploader artifacts: 
                 [[artifactId: "${ArtifactId}", 
                 classifier: '', 
-                file: 'target/mylabDevOps-0.0.4-SNAPSHOT.war', 
+                file: "target/${ArtifactId}-${Version}.war", 
                 type: 'war']], 
                 credentialsId: 'b2ccc82a-065e-4055-b007-eab0ca0e9802', 
                 groupId: "${GroupId}", 
