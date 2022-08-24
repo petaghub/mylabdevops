@@ -5,11 +5,9 @@ pipeline{
         maven 'maven'
     }
     environment{
-        ArtifacId = readMavenPom().getartifactId()
-        Version = readMavenPom().getversion()
-        Name = readMavenPom().getname()
-
-
+        ArtifacId = readMavenPom().getArtifactId()
+        Version = readMavenPom().getVersion()
+        Name = readMavenPom().getName()
     }
 
     stages {
