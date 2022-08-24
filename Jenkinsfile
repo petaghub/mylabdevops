@@ -60,9 +60,7 @@ pipeline{
                 echo "version is '${Version}'"
                 echo "Name is '${Name}'"
                   }
-            ArtifacId = 
-            Version = $Version
-            Name = $Name
+           
         }
 
         // Stage5 : Publish the source code to Sonarqube
